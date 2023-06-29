@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get file name
+        System.out.print("Enter file name: ");
+        String fileName = scanner.nextLine();
+
+        // Create a File object
+        File file = new File(fileName);
+
+        // Create a Scanner object to read the file
+        Scanner fileScanner = new Scanner(file);
+
+        // Create an array to store the numbers
+        int[] numbers = new int[100];
+        int count = 0;
+
+        // Read the numbers from the file
+        while (fileScanner.hasNext()) {
+            numbers[count] = fileScanner.nextInt();
+            count++;
+        }
+
+        // Print the numbers in the array
+        for (int number : numbers) {
+            System.out.println(number);
+        }
+    }
+}

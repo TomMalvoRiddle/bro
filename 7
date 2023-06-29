@@ -1,0 +1,92 @@
+class BookStore:
+    private static int totalBooksSold = 0;
+    private int storeID;
+    private String category;
+    private String author;
+    private String title;
+    private String publisher;
+    private double sellingPrice;
+    private int quantity;
+
+    def __init__(self, storeID, category, author, title, publisher, sellingPrice, quantity):
+        self.storeID = storeID
+        self.category = category
+        self.author = author
+        self.title = title
+        self.publisher = publisher
+        self.sellingPrice = sellingPrice
+        self.quantity = quantity
+
+    @staticmethod
+    def trackSalesStatus():
+        print("Total books sold: " + str(totalBooksSold))
+
+    def displayQuantity(self):
+        print("Quantity available for " + self.title + " (Book ID: " + str(self.storeID) + "): " + str(self.quantity))
+
+    def sellBook(self, quantitySold):
+        if quantitySold > self.quantity:
+            print("Error: Not enough quantity available for sale.")
+        else:
+            self.quantity -= quantitySold
+            totalBooksSold += quantitySold
+            print(quantitySold + " copies of " + self.title + " sold for a total price of $" + str(quantitySold * self.sellingPrice))
+
+    def getStoreID(self):
+        return self.storeID
+
+    def setStoreID(self, storeID):
+        self.storeID = storeID
+
+    def getCategory(self):
+        return self.category
+
+    def setCategory(self, category):
+        self.category = category
+
+    def getAuthor(self):
+        return self.author
+
+    def setAuthor(self, author):
+        self.author = author
+
+    def getTitle(self):
+        return self.title
+
+    def setTitle(self, title):
+        self.title = title
+
+    def getPublisher(self):
+        return self.publisher
+
+    def setPublisher(self, publisher):
+        self.publisher = publisher
+
+    def getSellingPrice(self):
+        return self.sellingPrice
+
+    def setSellingPrice(self, sellingPrice):
+        self.sellingPrice = sellingPrice
+
+    def getQuantity(self):
+        return self.quantity
+
+    def setQuantity(self, quantity):
+        self.quantity = quantity
+
+    @staticmethod
+    def main(args):
+        book1 = BookStore(1, "Kids", "J.K. Rowling", "Harry Potter and the Philosopher's Stone", "Bloomsbury", 9.99, 50)
+        book2 = BookStore(2, "Engineering", "Andrew Ng", "Machine Learning Yearning", "Cubicasa", 19.99, 20)
+
+        book1.displayQuantity()
+        book2.displayQuantity()
+
+        book1.sellBook(10)
+        book2.sellBook(5)
+
+        book1.displayQuantity()
+        book2.displayQuantity()
+
+        BookStore.trackSalesStatus()
+}
